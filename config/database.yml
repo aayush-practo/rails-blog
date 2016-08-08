@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: railBlog_development
+  database: rails_blog
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
