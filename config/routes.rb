@@ -54,8 +54,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  # root to: 'devise/sessions#new'
-  delete '/users/sign_out', to: 'devise/sessions#destroy'
   resources :articles do
     resources :comments
   end
