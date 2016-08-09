@@ -47,3 +47,5 @@ end
 
 
 gem 'haml', '4.0.7'
+gem 'devise', '4.2.0'
+gem 'haml-rails', '0.9.0'
