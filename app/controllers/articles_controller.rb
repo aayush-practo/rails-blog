@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  http_basic_authenticate_with name: "Aayush", password: "abcd", except: [:index, :show]
+  before_action :authenticate_user!
   def index
     @articles = Article.all
   end
@@ -24,7 +24,6 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    debugger
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
