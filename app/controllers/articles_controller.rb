@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -29,12 +29,13 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   def show
     @article = Article.find(params[:id])
+    @comment = @article.comments.new
   end
 
   def destroy

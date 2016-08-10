@@ -1,6 +1,6 @@
 %h1
   Articles
-= link_to 'New Article', new_article_path
+= link_to "New Article", new_article_path
 %table
   %tr
     %th Id
@@ -12,6 +12,6 @@
       %td= article.id
       %td= article.title
       %td= article.text
-      %td= link_to 'Show', article_path(article)
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}
+      %td= link_to "Show", article_path(article)
+      %td= link_to "Edit", edit_article_path(article)
+      %td= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}
