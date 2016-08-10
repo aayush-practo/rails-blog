@@ -1,6 +1,18 @@
 %h1
   Articles
 = link_to "New Article", new_article_path
+= search_form_for @q do |f|
+  = f.label :title_cont
+  = f.search_field :title_cont
+
+  = f.label :title_start
+  = f.search_field :title_start
+
+  = f.label :text_cont
+  = f.search_field :text_cont
+
+  = f.submit
+
 %table
   %tr
     %th Id
