@@ -196,6 +196,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   better_errors
+  binding_of_caller (= 0.7.2)
   byebug
   coffee-rails (~> 4.1.0)
   devise (= 4.2.0)
