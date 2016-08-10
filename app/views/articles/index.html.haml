@@ -7,6 +7,7 @@
     %th Title
     %th Text
     %th{colspan: 2}
+  = will_paginate @articles
   - @articles.each do |article|
     %tr
       %td= article.id
