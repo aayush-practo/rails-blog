@@ -11,13 +11,19 @@
   = f.label :text_cont
   = f.search_field :text_cont
 
-  = f.submit
+  = f.label :created_at_gteq
+  = f.search_field :created_at_gteq, "data-behaviour" => "datepicker"
 
+  = f.label :created_at_lteq
+  = f.search_field :created_at_lteq, "data-behaviour" => "datepicker"
+
+  = f.submit
 %table
   %tr
     %th= sort_link(@q, :id, 'Article ID', default_order: :desc)
     %th= sort_link(@q, :title, 'Article Title', default_order: :desc)
     %th= sort_link(@q, :text, 'Article text', default_order: :desc)
+    %th= sort_link(@q, :created_at, 'Created At', default_order: :desc)
     %th{colspan: 2}
   = will_paginate @articles
   - @articles.each do |article|
@@ -25,6 +31,7 @@
       %td= article.id
       %td= article.title
       %td= article.text
+      %td= article.created_at
       %td= link_to "Show", article_path(article)
       %td= link_to "Edit", edit_article_path(article)
       %td= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}
