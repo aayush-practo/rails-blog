@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
 
   before_action :authenticate_user!
   def index
-    # @articles = Article.paginate(page: params[:page], per_page: 2)
     @q = Article.search(params[:q])
     @articles = @q.result.paginate(page: params[:page], per_page: 2)
   end
