@@ -15,9 +15,9 @@
 
 %table
   %tr
-    %th Id
-    %th Title
-    %th Text
+    %th= sort_link(@q, :id, 'Article ID', default_order: :desc)
+    %th= sort_link(@q, :title, 'Article Title', default_order: :desc)
+    %th= sort_link(@q, :text, 'Article text', default_order: :desc)
     %th{colspan: 2}
   = will_paginate @articles
   - @articles.each do |article|
