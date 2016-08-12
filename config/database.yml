@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: railBlog_production
-  username: railBlog
-  password: <%= ENV['RAILBLOG_DATABASE_PASSWORD'] %>
+  database: rails_blog
+  username: root
+  password:

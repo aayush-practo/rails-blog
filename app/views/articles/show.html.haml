@@ -5,6 +5,13 @@
   %strong Text:
   = @article.text
 %h2 Comments
+- if @comment.errors.any?
+  #error_explanation
+    %h2= pluralize(@comment.errors.count, "error")
+    "prohibited this comment from being saved:"
+    %ul
+      - @comment.errors.full_messages.each do |message|
+        %li= message
 = render @article.comments
 
 %h2 Add Comment:

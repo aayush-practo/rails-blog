@@ -12,4 +12,9 @@
 
 class Comment < ActiveRecord::Base
   belongs_to :article
+  validates :commenter, presence: true, length: {minimum: 5}
+  validates :body, presence: true, length: {in: 5..100}
+  validates_each :commenter do |record, attr, value|
+    record.errors.add attr, 'Should start with upper case' if value =~ /\A[[:lower:]]/
+  end
 end
