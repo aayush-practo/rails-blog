@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :do_this, only: [:edit]
   def index
     @q = Article.search(params[:q])
     @articles = @q.result.paginate(page: params[:page], per_page: 10)
@@ -21,12 +22,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-
+    find_article
     if @article.update(article_params)
       redirect_to @article
     else
@@ -35,17 +34,20 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    find_article
     @comment = @article.comments.new
   end
 
   def destroy
-    @article = Article.find(params[:id])
+    find_article
     @article.destroy
     redirect_to articles_path
   end
 
   private
+    def find_article
+      @article = Article.find(params[:id])
+    end
     def article_params
       params.require(:article).permit(:title, :text)
     end

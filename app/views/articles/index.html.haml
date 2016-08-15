@@ -31,7 +31,7 @@
       %td= article.id
       %td= article.title
       %td= article.text
-      %td= article.created_at
+      %td= article.created_at.strftime("%I:%M %p, #{article.created_at.day.ordinalize} %h, %Y")
       %td= link_to "Show", article_path(article)
       %td= link_to "Edit", edit_article_path(article)
       %td= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"}

@@ -7,3 +7,9 @@
     = f.text_field :body
   %p
     = f.submit
+
+:javascript
+    $(document).ready( function() {
+      $('#comment_body').val('');
+      $('#comment_commenter').val('');
+    } );
