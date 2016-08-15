@@ -34,6 +34,15 @@ end
 
 class Comment < ActiveRecord::Base
   include ActiveModel::Validations
+  self.table_name = "comm"
   belongs_to :article
+  after_create do |user|
+    print_a_line(user)
+  end
   validates_with CommentValidator
+
+  protected
+  def print_a_line(object)
+    puts "an object has been created successfully! #{object.as_json}"
+  end
 end
