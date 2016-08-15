@@ -10,6 +10,6 @@
 #
 
 class Article < ActiveRecord::Base
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :nullify
   validates :title, presence: true, length: {minimum: 5, message: "Text should be minimum 5 characters long"}
 end
