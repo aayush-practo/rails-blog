@@ -9,12 +9,31 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+class CommentValidator < ActiveModel::Validator
+  def validate(record)
+    if record.commenter?
+      if record.commenter.length < 5
+        record.errors.add(:commenter, "Should at have 5 characters at least")
+      end
+      if record.commenter =~ /\A[[:lower:]]/
+        record.errors.add(:commenter, "Should start with capital letter")
+      end
+    else
+      record.errors.add(:commenter, "Should be present")
+    end
+    if record.body?
+      if record.body.length < 5 || record.body.length > 100
+        record.errors.add(:body, "Should have length in range 5 to 100")
+      end
+    else
+      record.errors.add(:body, "Should be present")
+    end
+  end
+end
+
 
 class Comment < ActiveRecord::Base
+  include ActiveModel::Validations
   belongs_to :article
-  validates :commenter, presence: true, length: {minimum: 5}
-  validates :body, presence: true, length: {in: 5..100}
-  validates_each :commenter do |record, attr, value|
-    record.errors.add attr, 'Should start with upper case' if value =~ /\A[[:lower:]]/
-  end
+  validates_with CommentValidator
 end
