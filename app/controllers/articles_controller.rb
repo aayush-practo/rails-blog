@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :do_this, only: [:edit]
   def index
     @q = Article.search(params[:q])
     @articles = @q.result.paginate(page: params[:page], per_page: 10)
@@ -22,6 +21,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    find_article
   end
 
   def update
