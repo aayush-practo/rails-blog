@@ -1,0 +1,17 @@
+- if user_signed_in?
+  %br
+  = link_to "Articles", articles_path
+%h1 Users
+%table
+  %tr
+    %th Id
+    %th Email
+    %th Adden On
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.email
+        %td= user.created_at.strftime("%I:%M %p, #{user.created_at.day.ordinalize} %h, %Y")
+- if !user_signed_in?
+  = link_to "Sign in", new_user_session_path
+  %br

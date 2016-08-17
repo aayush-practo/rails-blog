@@ -5,6 +5,11 @@
   %strong Text:
   = @article.text
 %h2 Comments
+- if flash[:error]
+  #error_explanation
+    %h2= pluralize(flash[:error].count, "error")
+    "prohibited this comment from being saved:"
+    = flash[:error]
 = render @article.comments
 
 %h2 Add Comment:
