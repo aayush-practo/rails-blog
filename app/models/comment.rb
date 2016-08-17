@@ -33,7 +33,6 @@ end
 
 
 class Comment < ActiveRecord::Base
-  include ActiveModel::Validations
   self.table_name = "comm"
   belongs_to :article
   after_create do |user|
