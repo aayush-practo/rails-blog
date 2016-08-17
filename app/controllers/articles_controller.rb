@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-
+  before_filter :find_article, except: [:index, :new, :create]
   before_action :authenticate_user!
   def index
     @q = Article.search(params[:q])
@@ -21,11 +21,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    find_article
   end
 
   def update
-    find_article
     if @article.update(article_params)
       redirect_to @article
     else
@@ -34,12 +32,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    find_article
     @comment = @article.comments.new
   end
 
   def destroy
-    find_article
     @article.destroy
     redirect_to articles_path
   end
